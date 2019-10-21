@@ -25,3 +25,9 @@ write a very simple product catalogue app.
 ### Run Docker Container `npm run docker:run`
 
 ### Stop Docker Container `npm run docker:stop`
+
+## Tech used:
+
+- React (with React Hooks);
+- Redux (with Redux-Sagas);
+- Styled Components

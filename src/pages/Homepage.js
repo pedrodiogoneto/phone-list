@@ -26,7 +26,7 @@ const Homepage = (props) => {
 
 	return(
 		<div>
-			<Title>PEDRO'S PHONES</Title>
+			<Title>PHONE CATALOGUE</Title>
 			
 			{ phoneList && selectedPhone && 
 				<PhoneModal phone={selectedPhone} showModal={showModal} onClose={() => setShowModal(false)} />
@@ -42,7 +42,8 @@ const Homepage = (props) => {
 
 			{ phoneList && 
 				<CarouselWrapper>
-					<ControlledCarousel phoneList={phoneList} onClickPhone={(selectedPhone) => handleSelectedPhone(selectedPhone) }/>
+					<ControlledCarousel phoneList={phoneList} onClickPhone={(selectedPhone) => handleSelectedPhone(selectedPhone) } 
+						phoneSelectedOnGridId={selectedPhone ? selectedPhone.id : null}/>
 				</CarouselWrapper>
 			}
 
@@ -70,7 +71,8 @@ const CarouselWrapper = styled.div`
 `
 
 const Title = styled.h1`
-	text-align: center
+	text-align: center;
+	margin-bottom: 20px;
 `
 
 const SpinnerWrapper = styled.div`

@@ -1,10 +1,14 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Carousel } from 'react-bootstrap'
 import styled from 'styled-components'
 
-export default function ControlledCarousel({phoneList, onClickPhone}) {
+export default function ControlledCarousel({phoneList, onClickPhone, phoneSelectedOnGridId}) {
 	const [index, setIndex] = useState(0);
 	const [direction, setDirection] = useState(null);
+
+	useEffect(() => {
+		setIndex(phoneSelectedOnGridId)
+	}, [phoneSelectedOnGridId])
 
 	const handleSelect = (selectedIndex, e) => {
 		setIndex(selectedIndex);
@@ -41,6 +45,13 @@ export default function ControlledCarousel({phoneList, onClickPhone}) {
 
 const PhoneImage = styled.img`
 	height: 400px;
+	user-drag: none; 
+	-moz-user-select: none;
+	-webkit-user-drag: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+	//pointer-events: none;
+
 `
 
 const ImageWrapper = styled.div`
@@ -50,5 +61,6 @@ const ImageWrapper = styled.div`
 `
 
 const Title = styled.h3`
-	color: black
+	color: black;
+	margin-bottom: 20px;
 `

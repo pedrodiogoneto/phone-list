@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { Provider } from 'react-redux'
 import Homepage from './pages/Homepage';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.css';
 
 import configureStore from './redux/store'
 

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Carousel } from 'react-bootstrap'
 
-export default function ControlledCarousel({phoneList}) {
+export default function ControlledCarousel({phoneList, onClickPhone}) {
 	const [index, setIndex] = useState(0);
 	const [direction, setDirection] = useState(null);
 
@@ -14,17 +14,18 @@ export default function ControlledCarousel({phoneList}) {
 		if(!phoneList) return
 		return phoneList.map(phone => {
 			return (
-				<Carousel.Item key={phone.id} style={{ maxHeight: '400px' }}
-				>
-					<img
-						className="d-block"
-						src={require(`../images/${phone.imageFileName}`)}
-						alt="First slide"
-						style={{ maxHeight: '400px' }}
-					/>
+				<Carousel.Item key={phone.id} style={{ maxHeight: '60%' }}>
+					<div style={{ display: 'flex', justifyContent: 'center', marginBottom: '100px' }}>
+						<img
+							className="d-block"
+							src={require(`../images/${phone.imageFileName}`)}
+							alt="First slide"
+							style={{ height: '400px' }}
+							onClick={() => onClickPhone(phone)}
+						/>
+					</div>
 					<Carousel.Caption>
-						<h3 style={{ color: 'black' }}>First slide label</h3>
-						<p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+						<h3 style={{ color: 'black' }}>{phone.name}</h3>
 					</Carousel.Caption>
 				</Carousel.Item>
 			)
@@ -33,7 +34,7 @@ export default function ControlledCarousel({phoneList}) {
 
 	return (
 		<Carousel activeIndex={index} direction={direction} onSelect={handleSelect}>
-			{renderCarouselItem()}
+			{renderCarouselItem()}	
 		</Carousel>
 	);
 }

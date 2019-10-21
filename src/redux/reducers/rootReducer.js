@@ -1,7 +1,6 @@
 const initialState = { phoneList: [],   loading: false,   error: '' };
 
 export default function reduxSagaReducer(state = initialState, action) {
-	console.log(action);
 	switch (action.type) {
 	case 'GET_PHONES_LIST': {
 		return {

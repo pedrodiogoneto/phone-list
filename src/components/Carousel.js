@@ -50,8 +50,6 @@ const PhoneImage = styled.img`
 	-webkit-user-drag: none;
 	-webkit-user-select: none;
 	-ms-user-select: none;
-	//pointer-events: none;
-
 `
 
 const ImageWrapper = styled.div`

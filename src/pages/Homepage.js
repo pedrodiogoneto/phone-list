@@ -14,7 +14,6 @@ const Homepage = (props) => {
 	const [showModal, setShowModal] = useState(false)
 	const [selectedPhone, setSelectedPhone] = useState({})
 
-
 	useEffect(() => { props.GET_PHONES_LIST() }, [])
 
 	useEffect(() => { setPhoneList(props.data) }, [props.data])

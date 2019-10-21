@@ -16,20 +16,13 @@ export default function PhoneGrid({ phoneList, onClickPhone }) {
 		))
 	}
 
-
-	return (
-		<Wrapper>
-			{renderPhoneList()}
-            
-		</Wrapper>
-	)
+	return <Wrapper>{renderPhoneList()}</Wrapper>
 }
 
 const Wrapper = styled.div`
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
-
 `
 
 const PhoneWrapper = styled.div`

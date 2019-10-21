@@ -35,9 +35,7 @@ export default function PhoneModal({ showModal, phone, onClose }) {
 				<PhoneColor color={phone.color}/>
 			</Modal.Body>
 			<Modal.Footer>
-				<CloseButtonWrapper onClick={onClose}>
-					Close
-				</CloseButtonWrapper>
+				<CloseButtonWrapper onClick={onClose}>Close</CloseButtonWrapper>
 			</Modal.Footer>
 		</Modal>
 	)

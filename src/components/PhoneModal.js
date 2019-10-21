@@ -8,11 +8,11 @@ export default function PhoneModal({ showModal, phone, onClose }) {
 		<Modal show={showModal} onHide={onClose}>
 			<Modal.Header>
 				<Modal.Title>				
-					<h3>{phone.name}</h3>
+					<h2>{phone.name}</h2>
 				</Modal.Title>
 			</Modal.Header>
 			<Modal.Body>
-				<div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+				<DescriptionWrapper>
 					<div>
 						<p>{phone.description}</p> 
 						<h6>Price:</h6>
@@ -22,7 +22,7 @@ export default function PhoneModal({ showModal, phone, onClose }) {
 						src={imageSource}
 						alt="First slide"
 					/>
-				</div>
+				</DescriptionWrapper>
 				<h5>Manufacturer:</h5>
 				<p>{phone.manufacturer}</p>
 				<h6>Processor:</h6>
@@ -59,4 +59,10 @@ const CloseButtonWrapper = styled.button`
 
 const PhoneImage = styled.img`
 	height: 250px
+`
+
+const DescriptionWrapper = styled.div`
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 `

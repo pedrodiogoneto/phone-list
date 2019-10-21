@@ -35,10 +35,8 @@ export default function PhoneModal({ showModal, phone, onClose }) {
 				<PhoneColor color={phone.color}/>
 			</Modal.Body>
 			<Modal.Footer>
-				<CloseButtonWrapper>
-					<button variant="secondary" onClick={onClose}>
-						Close
-					</button>
+				<CloseButtonWrapper onClick={onClose}>
+					Close
 				</CloseButtonWrapper>
 			</Modal.Footer>
 		</Modal>
@@ -55,6 +53,8 @@ const PhoneColor = styled.div`
 const CloseButtonWrapper = styled.button`
 	width: 100%;
     margin: 0px auto;
+	background-color: white;
+	border: 0px
 `
 
 const PhoneImage = styled.img`

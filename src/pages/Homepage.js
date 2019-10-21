@@ -5,32 +5,42 @@ import { GET_PHONES_LIST } from '../redux/actions/actions'
 import { connect } from 'react-redux';
 
 import ControlledCarousel from '../components/Carousel'
+import PhoneGrid from '../components/PhoneGrid'
+import { Spinner } from 'react-bootstrap';
+import PhoneModal from '../components/PhoneModal'
 
 const Homepage = (props) => {
 	const [phoneList, setPhoneList] = useState([])
+	const [showModal, setShowModal] = useState(false)
+	const [selectedPhone, setSelectedPhone] = useState({})
 
 
 	useEffect(() => { props.GET_PHONES_LIST() }, [])
 
 	useEffect(() => { setPhoneList(props.data) }, [props.data])
 
-	const handleClick = () => props.GET_PHONES_LIST()
-
-	const renderPhoneList = () => {
-		if (!phoneList) return
-		console.log('asdfasdfasdf', phoneList);
-		return phoneList.map(phone => <div key={phone.id}>{phone.name}</div>)
+	const handleSelectedPhone = (selectedPhone) => {
+		setSelectedPhone(selectedPhone)
+		setShowModal(true)
 	}
 
-	console.log('asdf', props, phoneList);
 	return(
 		<div>
 			<Title>PEDRO'S PHONES</Title>
-			<button onClick={() => handleClick()}>asdasfdasdfasdgf</button>
-			{ phoneList && renderPhoneList() }
-			<CarouselWrapper>
-				{ phoneList && <ControlledCarousel phoneList={phoneList} /> }
-			</CarouselWrapper>
+			{phoneList && selectedPhone && 
+				<PhoneModal phone={selectedPhone} showModal={showModal} onClose={() => setShowModal(false)} />
+			}
+			{ !phoneList && props.loading && 
+				<Spinner animation="border" role="status">
+					<span className="sr-only">Loading...</span>
+				</Spinner> 
+			}
+			{ phoneList && 
+				<CarouselWrapper>
+					<ControlledCarousel phoneList={phoneList} onClickPhone={(selectedPhone) => handleSelectedPhone(selectedPhone) }/>
+				</CarouselWrapper>
+			}
+			{ phoneList && <PhoneGrid phoneList={phoneList} onClickPhone={(selectedPhone) => handleSelectedPhone(selectedPhone) }/> }
 		</div>
 	)
 }
@@ -48,7 +58,9 @@ export default connect(mapStateToProps, mapDispatchToProps)(Homepage)
 
 
 const CarouselWrapper = styled.div`
-	max-height: 300px;
+	height: 60%;
+	margin-bottom: 5%;
+	text-align: center;
 `
 
 const Title = styled.h1`

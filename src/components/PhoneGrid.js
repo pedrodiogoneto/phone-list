@@ -7,10 +7,9 @@ export default function PhoneGrid({ phoneList, onClickPhone }) {
 		if (!phoneList) return
 		return phoneList.map(phone => (
 			<PhoneWrapper key={phone.id} onClick={()=> onClickPhone(phone)}>
-				<img
+				<PhoneImage
 					src={require(`../images/${phone.imageFileName}`)}
 					alt="First slide"
-					style={{ height: '100px' }}
 				/>
 				<div>{phone.name}</div>
 			</PhoneWrapper>
@@ -40,4 +39,8 @@ const PhoneWrapper = styled.div`
     border: 1px solid #8080801a;
     text-align: center;
     min-width: 200px;
+`
+
+const PhoneImage = styled.img`
+    height: 100px
 `

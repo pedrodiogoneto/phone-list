@@ -27,19 +27,25 @@ const Homepage = (props) => {
 	return(
 		<div>
 			<Title>PEDRO'S PHONES</Title>
-			{phoneList && selectedPhone && 
+			
+			{ phoneList && selectedPhone && 
 				<PhoneModal phone={selectedPhone} showModal={showModal} onClose={() => setShowModal(false)} />
 			}
+			
 			{ !phoneList && props.loading && 
-				<Spinner animation="border" role="status">
-					<span className="sr-only">Loading...</span>
-				</Spinner> 
+				<SpinnerWrapper>
+					<Spinner animation="border" role="status">
+						<span className="sr-only">Loading...</span>
+					</Spinner> 
+				</SpinnerWrapper>
 			}
+
 			{ phoneList && 
 				<CarouselWrapper>
 					<ControlledCarousel phoneList={phoneList} onClickPhone={(selectedPhone) => handleSelectedPhone(selectedPhone) }/>
 				</CarouselWrapper>
 			}
+
 			{ phoneList && <PhoneGrid phoneList={phoneList} onClickPhone={(selectedPhone) => handleSelectedPhone(selectedPhone) }/> }
 		</div>
 	)
@@ -65,4 +71,9 @@ const CarouselWrapper = styled.div`
 
 const Title = styled.h1`
 	text-align: center
+`
+
+const SpinnerWrapper = styled.div`
+	text-align: center;
+	margin-top: 25%
 `

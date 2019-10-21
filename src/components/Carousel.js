@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Carousel } from 'react-bootstrap'
+import styled from 'styled-components'
 
 export default function ControlledCarousel({phoneList, onClickPhone}) {
 	const [index, setIndex] = useState(0);
@@ -15,17 +16,16 @@ export default function ControlledCarousel({phoneList, onClickPhone}) {
 		return phoneList.map(phone => {
 			return (
 				<Carousel.Item key={phone.id} style={{ maxHeight: '60%' }}>
-					<div style={{ display: 'flex', justifyContent: 'center', marginBottom: '100px' }}>
-						<img
+					<ImageWrapper>
+						<PhoneImage
 							className="d-block"
 							src={require(`../images/${phone.imageFileName}`)}
 							alt="First slide"
-							style={{ height: '400px' }}
 							onClick={() => onClickPhone(phone)}
 						/>
-					</div>
+					</ImageWrapper>
 					<Carousel.Caption>
-						<h3 style={{ color: 'black' }}>{phone.name}</h3>
+						<Title>{phone.name}</Title>
 					</Carousel.Caption>
 				</Carousel.Item>
 			)
@@ -38,3 +38,17 @@ export default function ControlledCarousel({phoneList, onClickPhone}) {
 		</Carousel>
 	);
 }
+
+const PhoneImage = styled.img`
+	height: 400px;
+`
+
+const ImageWrapper = styled.div`
+	display: flex;
+	justify-content: center;
+	margin-bottom: 100px;
+`
+
+const Title = styled.h3`
+	color: black
+`
